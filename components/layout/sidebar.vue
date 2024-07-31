@@ -8,5 +8,7 @@
             <NuxtImg src="./logo.svg" alt="" width="100px"
             class="mx-auto"/>
         </NuxtLink>
+
+        <UiButton>Send</UiButton>>
     </aside>
 </template>
