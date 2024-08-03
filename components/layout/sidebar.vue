@@ -9,6 +9,6 @@
             class="mx-auto"/>
         </NuxtLink>
 
-        <UiButton>Send</UiButton>>
+        <UiButton>Send</UiButton>
     </aside>
 </template>
