@@ -15,11 +15,11 @@ module.exports = {
       },
     },
     fontSize: {
-      xs: '1.08rem',
-      sm: '1.28rem',
-      base: '1.42rem',
-      lg: '1.49rem',
-      xl: '1.66rem',
+      xs: '1.05rem',
+      sm: '1.2rem',
+      base: '1.38rem',
+      lg: '1.46rem',
+      xl: '1.6rem',
     },
     extend: {
       transitionDuration: {
