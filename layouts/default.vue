@@ -1,6 +1,7 @@
 <script lang="ts" setup>
-import { account } from "@/utils/appwrite";
-import {useAuthStore, useIsLoadingStore} from "/store/auth.store";
+import { onMounted } from "vue"
+import { account } from "../utils/appwrite"
+import { useAuthStore, useIsLoadingStore } from "../store/auth.store"
 
 
 const isLoadingStore = useIsLoadingStore()
@@ -10,9 +11,9 @@ const router = useRouter()
 onMounted(async() => {
     try {
         const user = await account.get()
-        if (user) store.set({user})
+        if (user) store.set(user)
     } catch (error) {
-        router.push('/login')
+        await router.push('/login')
     } finally {
         isLoadingStore.set(false)
     }

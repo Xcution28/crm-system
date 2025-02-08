@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import {v4 as uuid} from 'uuid'
-import {useAuthStore, useIsLoadingStore} from "/store/auth.store";
+import { v4 as uuid } from 'uuid'
+import { useAuthStore, useIsLoadingStore } from "../store/auth.store"
 
 useSeoMeta({
-    title: 'Login | CRM System',
+    title: 'Login | CRM System'
 })
 
 const emailRef = ref('')
@@ -16,7 +16,7 @@ const router = useRouter()
 
 const login = async () => {
     isLoadingStore.set(true)
-    await account.createSession(emailRef.value, passwordRef.value)
+    await account.createEmailPasswordSession(emailRef.value, passwordRef.value)
     const response = await account.get()
     if (response) {
         authStore.set({
@@ -44,7 +44,6 @@ const register = async () => {
     <div class="flex items-center justify-center min-h-screen w-full">
         <div class="rounded bg-sidebar w-1/4 p-5">
             <h1 class="text-2xl font-bold text-center mb-5">Login</h1>
-
             <form>
                 <UiInput
                     placeholder="Email"
