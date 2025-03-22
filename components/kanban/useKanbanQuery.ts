@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/vue-query"
 import { KANBAN_DATA } from "./kanban.data"
-import { IDeal } from "../../types/deals.types"
+import type { IDeal } from "~/types/deals.types"
 
 export function useKanbanQuery() {
 
@@ -10,17 +10,17 @@ export function useKanbanQuery() {
         select(data) {
             const newBoard = [...KANBAN_DATA]
             const deals = data.documents as unknown as IDeal[]
-            console.log(deals, newBoard)
 
             deals.forEach((deal) => {
                 const column = newBoard.find(col => col.id === deal.status)
+                console.log(column, 'column')
                 if (column) {
                     column.items.push({
                         $createdAt: deal.$createdAt,
                         id: deal.$id,
                         name: deal.name,
                         price: deal.price,
-                        companyName: deal.customer.name,
+                        companyName: deal.customers.name,
                         status: column.name
                     })
                 }
