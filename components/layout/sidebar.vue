@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { useAuthStore, useIsLoadingStore } from "../../store/auth.store"
+import { useAuthStore, useIsLoadingStore } from "~/store/auth.store"
 
 const store = useAuthStore()
 const isLoadingStore = useIsLoadingStore()

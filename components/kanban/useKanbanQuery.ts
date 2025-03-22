@@ -13,7 +13,6 @@ export function useKanbanQuery() {
 
             deals.forEach((deal) => {
                 const column = newBoard.find(col => col.id === deal.status)
-                console.log(column, 'column')
                 if (column) {
                     column.items.push({
                         $createdAt: deal.$createdAt,
