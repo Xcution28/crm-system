@@ -5,6 +5,7 @@ import { convertPrice } from "~/utils/convertPrice"
 import { useMutation } from "@tanstack/vue-query";
 import type { EnumStatus } from "~/types/deals.types"
 import dayjs from "dayjs"
+import { generateGradient } from "~/components/kanban/generate-gradient"
 
 useSeoMeta({
     title: 'Home | CRM System',
@@ -59,7 +60,7 @@ const handleDrop = (targetColumn: IColumn) => {
                     @dragover="handleDragEnd"
                     @drop="() => handleDrop(column)"
                 >
-                    <div class="rounded bg-slate-700 py-1 px-5 mb-2 text-center">{{ column.name }}</div>
+                    <div class="rounded bg-slate-700 py-1 px-5 mb-2 text-center" :style="generateGradient(idx, data?.length)">{{ column.name }}</div>
                     <div>
                         <KanbanCreateDeal :refetch="refetch" :status="column.id" />
                         <UiCard
