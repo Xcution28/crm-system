@@ -47,7 +47,12 @@ const { mutate, isPending } = useMutation({
 })
 
 const onSubmit = handleSubmit(values => {
-    mutate(values)
+    const formattedValues = {
+        ...values,
+        price: Number(values.price)
+    }
+
+    mutate(formattedValues)
 })
 </script>
 

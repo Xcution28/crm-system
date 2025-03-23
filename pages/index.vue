@@ -57,6 +57,7 @@ const handleDrop = (targetColumn: IColumn) => {
                 <div
                     v-for="(column, idx) in data"
                     :key="column.id"
+                    class="min-h-screen"
                     @dragover="handleDragEnd"
                     @drop="() => handleDrop(column)"
                 >
