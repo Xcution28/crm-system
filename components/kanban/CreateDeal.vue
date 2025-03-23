@@ -9,7 +9,7 @@ const isOpenForm = ref<boolean>(false)
 
 interface IDealFormState extends Pick<IDeal, 'name' | 'price'>
 {
-    customer: {
+    customers: {
         email: string
         name: string
     }
@@ -34,8 +34,8 @@ const { handleSubmit, defineField, handleReset } = useForm<IDealFormState>({
 
 const [name, nameAttrs] = defineField('name')
 const [price, priceAttrs] = defineField('price')
-const [customerEmail, customerEmailAttrs] = defineField('customer.email')
-const [customerName, customerNameAttrs] = defineField('customer.name')
+const [customerEmail, customerEmailAttrs] = defineField('customers.email')
+const [customerName, customerNameAttrs] = defineField('customers.name')
 
 const { mutate, isPending } = useMutation({
     mutationKey: ['create a new deal'],
