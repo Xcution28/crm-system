@@ -4,7 +4,7 @@ export default defineNuxtConfig({
   devtools: { enabled: false },
   modules: [
       '@nuxt/image',
-      '@nuxtjs/tailwindcss',
+      '@nuxt/ui',
       'shadcn-nuxt',
       ['@nuxtjs/google-fonts', {
           families: {
@@ -14,7 +14,6 @@ export default defineNuxtConfig({
               },
           },
       }],
-      "@nuxt/icon",
       '@pinia/nuxt',
       [
           '@vee-validate/nuxt',
