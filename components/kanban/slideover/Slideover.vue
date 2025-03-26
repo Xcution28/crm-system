@@ -24,6 +24,7 @@ const isLocalOpen = computed({
                 </template>
             </UCard>
         </USlideover>
+        <KanbanSlideoverComments></KanbanSlideoverComments>
     </div>
 </template>
 
