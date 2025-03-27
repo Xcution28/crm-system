@@ -4,6 +4,9 @@ import type { IDeal } from "~/types/deals.types"
 import { useMutation } from "@tanstack/vue-query"
 import { v4 as uuid } from 'uuid'
 import { DB_ID, COLLECTION_DEALS } from '~/utils/app.constants'
+import { DB } from "~/utils/appwrite"
+import { ref } from "vue"
+import { useForm } from "vee-validate"
 
 const isOpenForm = ref<boolean>(false)
 

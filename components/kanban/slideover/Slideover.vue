@@ -20,7 +20,7 @@ const isLocalOpen = computed({
                 :ui="{ body: { base: 'flex-1' }, ring: '', divide: 'divide-y divide-border' }"
             >
                 <template #header>
-                    <KanbanSlideoverTop></KanbanSlideoverTop>
+                    <KanbanSlideoverHeader></KanbanSlideoverHeader>
                 </template>
                 <KanbanSlideoverComments></KanbanSlideoverComments>
             </UCard>

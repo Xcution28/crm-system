@@ -71,8 +71,8 @@ const handleDrop = (targetColumn: IColumn) => {
                             :key="card.id"
                             class="mb-3"
                             draggable="true"
-                            role="button"
                             @dragstart="() => handleDragStart(card, column)"
+                            role="button"
                             @click="store.set(card)"
                         >
                             <UiCardHeader>
