@@ -1,0 +1,46 @@
+<script lang="ts">
+import { useQuery } from "@tanstack/vue-query"
+import { ICustomer } from "~/types/deals.types"
+import { COLLECTION_CUSTOMERS, DB_ID } from "~/utils/app.constants"
+import { DB } from "~/utils/appwrite"
+
+useSeoMeta({
+    title: 'Customers | CRM System'
+})
+
+const { data, isLoading } = useQuery({
+    queryKey: ['customers'],
+    queryFn: () => DB.listDocuments(DB_ID, COLLECTION_CUSTOMERS)
+})
+
+const customers = (data?.documents as unknown as ICustomer[])
+</script>
+
+<template>
+    <div class="p-10">
+        <h1 class="font-bold text-2xl mb-10">Наши клиенты</h1>
+        <div v-if="isLoading">Loading...</div>
+        <UiTable v-else>
+            <UiTableHeader>
+                <UiTableRow>
+                    <UiTableHeader class="w-[80px]">Изображение</UiTableHeader>
+                    <UiTableHeader class="w-[200px]">Наименование</UiTableHeader>
+                    <UiTableHeader class="w-[200px]">Email</UiTableHeader>
+                    <UiTableHeader>Откуда пришел</UiTableHeader>
+                </UiTableRow>
+            </UiTableHeader>
+            <UiTableBody>
+                <UiTableRow v-for="customer in customers" :key="customer.$id">
+                    <UiTableCell>
+                        <NuxtLink :href="`/customers/edit/${customer.$id}`">
+                            <img :src="customer.avatar_url" :alt="customer.name" width="50" height="50" />
+                        </NuxtLink>
+                    </UiTableCell>
+                    <UiTableCell class="font-medium">{{ customer.name }}</UiTableCell>
+                    <UiTableCell>{{ customer.email }}</UiTableCell>
+                    <UiTableCell>{{ customer.from_source }}</UiTableCell>
+                </UiTableRow>
+            </UiTableBody>
+        </UiTable>
+    </div>
+</template>
