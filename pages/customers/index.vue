@@ -1,6 +1,6 @@
-<script lang="ts">
+<script lang="ts" setup>
 import { useQuery } from "@tanstack/vue-query"
-import { ICustomer } from "~/types/deals.types"
+import type { ICustomer } from "~/types/deals.types"
 import { COLLECTION_CUSTOMERS, DB_ID } from "~/utils/app.constants"
 import { DB } from "~/utils/appwrite"
 
@@ -12,8 +12,6 @@ const { data, isLoading } = useQuery({
     queryKey: ['customers'],
     queryFn: () => DB.listDocuments(DB_ID, COLLECTION_CUSTOMERS)
 })
-
-const customers = (data?.documents as unknown as ICustomer[])
 </script>
 
 <template>
@@ -23,14 +21,14 @@ const customers = (data?.documents as unknown as ICustomer[])
         <UiTable v-else>
             <UiTableHeader>
                 <UiTableRow>
-                    <UiTableHeader class="w-[80px]">Изображение</UiTableHeader>
-                    <UiTableHeader class="w-[200px]">Наименование</UiTableHeader>
-                    <UiTableHeader class="w-[200px]">Email</UiTableHeader>
-                    <UiTableHeader>Откуда пришел</UiTableHeader>
+                    <UiTableHead class="w-[200px]">Изображение</UiTableHead>
+                    <UiTableHead class="w-[300px]">Наименование</UiTableHead>
+                    <UiTableHead class="w-[200px]">Email</UiTableHead>
+                    <UiTableHead>Откуда пришел</UiTableHead>
                 </UiTableRow>
             </UiTableHeader>
             <UiTableBody>
-                <UiTableRow v-for="customer in customers" :key="customer.$id">
+                <UiTableRow v-for="customer in (data?.documents as unknown as ICustomer[])" :key="customer.$id">
                     <UiTableCell>
                         <NuxtLink :href="`/customers/edit/${customer.$id}`">
                             <img :src="customer.avatar_url" :alt="customer.name" width="50" height="50" />
